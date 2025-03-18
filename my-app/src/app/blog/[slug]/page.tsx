@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import { blogPosts, categories } from '@/data/blogPosts';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import MarkdownContent from '@/components/MarkdownContent';
 
 interface BlogPostPageProps {
   params: {
@@ -45,8 +46,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="p-8">
                 <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
                 <p className="text-gray-500 mb-6">发布于 {post.date} • {post.category}</p>
-                <div className="prose max-w-none">
-                  <p>{post.content || post.excerpt}</p>
+                <div className="prose prose-lg max-w-none">
+                  <MarkdownContent content={post.content || post.excerpt} />
                 </div>
               </div>
             </article>
