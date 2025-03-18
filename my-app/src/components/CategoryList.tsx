@@ -7,24 +7,28 @@ interface CategoryListProps {
 
 export default function CategoryList({ categories, activeCategory }: CategoryListProps) {
   return (
-    <div className="space-y-2">
-      <h3 className="text-sm font-semibold uppercase text-gray-500 mb-4">CATEGORIES</h3>
-      <ul className="space-y-2">
+    <div className="space-y-4">
+      <h3 className="text-base font-bold text-blue-600 mb-4 pb-2 border-b border-gray-200">分类目录</h3>
+      <ul className="space-y-3">
         <li>
           <Link 
             href="/blog" 
-            className={`block text-sm ${!activeCategory ? 'font-semibold text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
+            className={`flex items-center group ${!activeCategory ? 'font-medium text-blue-600' : 'text-gray-700 hover:text-blue-600'} transition-colors duration-200`}
           >
-            所有文章
+            <span className={`w-2 h-2 rounded-full mr-2 ${!activeCategory ? 'bg-blue-600' : 'bg-gray-300 group-hover:bg-blue-600'} transition-colors duration-200`}></span>
+            <span>所有文章</span>
+            <span className="ml-auto text-sm text-gray-500">12</span>
           </Link>
         </li>
         {categories.map((category) => (
           <li key={category}>
             <Link 
               href={`/blog/category/${category.toLowerCase().replace(/ /g, '-')}`}
-              className={`block text-sm ${activeCategory === category ? 'font-semibold text-blue-600' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`flex items-center group ${activeCategory === category ? 'font-medium text-blue-600' : 'text-gray-700 hover:text-blue-600'} transition-colors duration-200`}
             >
-              {category}
+              <span className={`w-2 h-2 rounded-full mr-2 ${activeCategory === category ? 'bg-blue-600' : 'bg-gray-300 group-hover:bg-blue-600'} transition-colors duration-200`}></span>
+              <span>{category}</span>
+              <span className="ml-auto text-sm text-gray-500">5</span>
             </Link>
           </li>
         ))}

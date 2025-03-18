@@ -49,6 +49,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   imageSrc={post.imageSrc}
                   imageAlt={post.imageAlt}
                   slug={post.slug}
+                  category={post.category}
                 />
               ))}
             </div>
