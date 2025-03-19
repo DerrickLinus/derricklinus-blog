@@ -78,3 +78,42 @@ body {
 .markdown-content em {
   @apply italic;
 }
+
+/* 页面切换过渡效果 */
+.page-transition-wrapper {
+  position: relative;
+  min-height: 100vh;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 提高图片加载性能 */
+img {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 优化页面滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 减少布局偏移 */
+* {
+  box-sizing: border-box;
+}
+
+/* 预设图片容器尺寸以减少布局偏移 */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}

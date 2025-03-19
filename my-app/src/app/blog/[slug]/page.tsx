@@ -17,6 +17,10 @@ export async function generateStaticParams() {
   return paths;
 }
 
+// 使页面转换更平滑的属性
+export const revalidate = 3600; // 设置页面缓存时间
+export const dynamicParams = false; // 仅允许预渲染的路径
+
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug);
   const categories = getCategories();
@@ -43,13 +47,17 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           {/* 主要内容区 - 文章 */}
           <div className="lg:w-4/5">
             <article className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-              <div className="relative h-96 w-full">
+              <div className="relative h-96 w-full image-container">
                 <Image 
                   src={post.imageSrc} 
                   alt={post.imageAlt} 
                   fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 75vw"
                   className="object-cover"
                   priority
+                  loading="eager"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjJmMmYyIj48L3JlY3Q+PC9zdmc+"
                 />
               </div>
               <div className="p-8">
