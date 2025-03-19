@@ -35,6 +35,7 @@ export default function BlogPage() {
                   imageAlt={post.imageAlt}
                   slug={post.slug}
                   category={post.category}
+                  isPinned={post.isPinned}
                 />
               ))}
             </div>

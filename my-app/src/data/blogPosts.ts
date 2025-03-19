@@ -8,4 +8,5 @@ export interface BlogPost {
   imageSrc: string;
   imageAlt: string;
   content?: string;
+  isPinned?: boolean;
 }

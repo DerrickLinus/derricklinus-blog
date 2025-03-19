@@ -9,11 +9,26 @@ interface BlogCardProps {
   imageAlt: string;
   slug: string;
   category?: string;
+  isPinned?: boolean;
 }
 
-export default function BlogCard({ title, excerpt, date, imageSrc, imageAlt, slug, category = '技术分享' }: BlogCardProps) {
+export default function BlogCard({ 
+  title, 
+  excerpt, 
+  date, 
+  imageSrc, 
+  imageAlt, 
+  slug, 
+  category = '技术分享',
+  isPinned = false 
+}: BlogCardProps) {
   return (
-    <div className="overflow-hidden rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 bg-white transform hover:-translate-y-1">
+    <div className="overflow-hidden rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 bg-white transform hover:-translate-y-1 relative">
+      {isPinned && (
+        <div className="absolute top-2 right-2 z-10 text-2xl" title="置顶文章">
+          📌
+        </div>
+      )}
       <Link href={`/blog/${slug}`} className="block">
         <div className="relative h-64 w-full">
           <Image 

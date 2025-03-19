@@ -1,12 +1,13 @@
 ---
-id: '5'
+id: '1'
 title: 'README'
 slug: 'readme-welcome'
 excerpt: '欢迎来到我的个人博客'
-date: '04/20/2025'
+date: '01/20/2025'
 category: '生活随笔'
 imageSrc: '/blog/welcome-blog.png'
 imageAlt: '欢迎来到我的博客'
+isPinned: true
 ---
 
 初次见面，请多关照

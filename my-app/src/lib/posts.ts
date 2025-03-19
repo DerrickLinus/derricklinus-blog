@@ -37,12 +37,19 @@ export function getAllPostsData(): BlogPost[] {
       category: matterResult.data.category,
       imageSrc: matterResult.data.imageSrc,
       imageAlt: matterResult.data.imageAlt,
-      content: processedContent
+      content: processedContent,
+      isPinned: matterResult.data.isPinned || false
     } as BlogPost;
   });
 
-  // 按日期排序，最新的文章放前面
+  // 先按置顶排序，再按日期排序
   return allPostsData.sort((a, b) => {
+    // 如果a是置顶而b不是，a排在前面
+    if (a.isPinned && !b.isPinned) return -1;
+    // 如果b是置顶而a不是，b排在前面
+    if (!a.isPinned && b.isPinned) return 1;
+    
+    // 置顶状态相同，则按日期排序（新的在前）
     if (a.date < b.date) {
       return 1;
     } else {
@@ -74,7 +81,8 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
       category: matterResult.data.category,
       imageSrc: matterResult.data.imageSrc,
       imageAlt: matterResult.data.imageAlt,
-      content: processedContent
+      content: processedContent,
+      isPinned: matterResult.data.isPinned || false
     } as BlogPost;
   } catch (error) {
     console.error(`Error loading post with slug: ${slug}`, error);

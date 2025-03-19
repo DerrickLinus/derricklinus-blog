@@ -51,6 +51,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   imageAlt={post.imageAlt}
                   slug={post.slug}
                   category={post.category}
+                  isPinned={post.isPinned}
                 />
               ))}
             </div>

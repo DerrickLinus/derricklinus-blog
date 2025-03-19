@@ -7,6 +7,7 @@ date: '03/12/2025'
 category: '技术分享'
 imageSrc: '/blog/git-support.png'
 imageAlt: 'Git support in Zed editor'
+isPinned: false
 ---
 
 Zed现在原生支持Git操作，让你的开发工作流程更加流畅。无需切换到终端或其他工具，你可以直接在编辑器中完成所有常见的Git操作。

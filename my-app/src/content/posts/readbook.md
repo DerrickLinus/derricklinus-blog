@@ -7,6 +7,7 @@ date: '03/19/2025'
 category: '读书笔记'
 imageSrc: '/blog/icon-themes.png'
 imageAlt: '书籍'
+isPinned: false
 ---
 
 # 分享我的读书思考
