@@ -2,7 +2,7 @@ import BlogCard from '@/components/BlogCard';
 import BlogHeader from '@/components/BlogHeader';
 import CategoryList from '@/components/CategoryList';
 import Navbar from '@/components/Navbar';
-import { blogPosts, categories } from '@/data/blogPosts';
+import { getCategories, getPostsByCategory } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 
 interface CategoryPageProps {
@@ -18,12 +18,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
+  const categories = getCategories();
   const categoryExists = categories.includes(formattedCategory);
   if (!categoryExists) {
     notFound();
   }
 
-  const filteredPosts = blogPosts.filter(post => post.category === formattedCategory);
+  const filteredPosts = getPostsByCategory(formattedCategory);
 
   return (
     <div className="min-h-screen bg-white">

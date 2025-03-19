@@ -1,7 +1,7 @@
 import BlogHeader from '@/components/BlogHeader';
 import CategoryList from '@/components/CategoryList';
 import Navbar from '@/components/Navbar';
-import { blogPosts, categories } from '@/data/blogPosts';
+import { getCategories, getPostBySlug, getAllPostSlugs } from '@/lib/posts';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import MarkdownContent from '@/components/MarkdownContent';
@@ -12,8 +12,14 @@ interface BlogPostPageProps {
   };
 }
 
+export async function generateStaticParams() {
+  const paths = getAllPostSlugs();
+  return paths;
+}
+
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find(post => post.slug === params.slug);
+  const post = getPostBySlug(params.slug);
+  const categories = getCategories();
   
   if (!post) {
     notFound();

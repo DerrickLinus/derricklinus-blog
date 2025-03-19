@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 interface MarkdownContentProps {
@@ -7,6 +8,17 @@ interface MarkdownContentProps {
 }
 
 export default function MarkdownContent({ content }: MarkdownContentProps) {
+  // 当内容已经是HTML格式时，直接渲染HTML
+  // 我们的posts.ts现在总是将Markdown转换为HTML，所以这里应该总是进入这个分支
+  const isHtml = /<[a-z][\s\S]*>/i.test(content);
+
+  if (isHtml) {
+    return (
+      <div className="markdown-content" dangerouslySetInnerHTML={{ __html: content }} />
+    );
+  }
+
+  // 作为备份，仍然保留ReactMarkdown渲染
   return (
     <ReactMarkdown
       components={{

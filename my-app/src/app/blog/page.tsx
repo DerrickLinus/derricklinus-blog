@@ -3,9 +3,12 @@ import BlogHeader from '@/components/BlogHeader';
 import CategoryList from '@/components/CategoryList';
 import Navbar from '@/components/Navbar';
 import ProfileCard from '@/components/ProfileCard';
-import { blogPosts, categories } from '@/data/blogPosts';
+import { getAllPostsData, getCategories } from '@/lib/posts';
 
 export default function BlogPage() {
+  const blogPosts = getAllPostsData();
+  const categories = getCategories();
+  
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
