@@ -33,7 +33,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           {/* 左侧栏 - 分类目录 */}
           <div className="lg:w-1/5">
             <div className="sticky top-24 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg shadow-md p-4 border border-gray-200">
-              <CategoryList categories={categories.filter(c => c !== '所有文章')} />
+              <CategoryList 
+                categories={categories.filter(c => c !== '所有文章')} 
+                activeCategory={post.category}
+              />
             </div>
           </div>
           
